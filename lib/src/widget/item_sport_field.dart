@@ -18,6 +18,7 @@ class ItemSportField extends StatelessWidget {
       margin: EdgeInsets.all(8.0),
       child: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(nombre,
             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -30,17 +31,23 @@ class ItemSportField extends StatelessWidget {
             ),
             Row(
               children: [
-                ElevatedButton(
-                  onPressed: (){}, 
-                  child: Text('Reservar')
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: (){}, 
+                    child: Text('Reservar')
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: (){}, 
-                  child: Text('Horarios')
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: (){}, 
+                    child: Text('Horarios')
+                  ),
                 ),
-                ElevatedButton(
-                  onPressed: (){}, 
-                  child: Text('Historial Reservas')
+                Expanded(
+                  child: ElevatedButton(
+                    onPressed: (){}, 
+                    child: Text('Historial')
+                  ),
                 ),
               ],
             )

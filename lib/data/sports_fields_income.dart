@@ -12,6 +12,6 @@ const List<Map<String, dynamic>> sportsFieldsIncome = [
   {
     'nombre': 'Cancha Suarez',
     'tipo': 'Baloncesto',
-    'ubicacion': 'Colonia Las Mercedes',
+    'ubicacion': 'Colonia Las ',
   },
 ];
