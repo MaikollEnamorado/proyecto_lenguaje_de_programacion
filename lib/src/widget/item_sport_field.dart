@@ -29,28 +29,38 @@ class ItemSportField extends StatelessWidget {
             Text(ubicacion,
             style: TextStyle(fontSize: 20,),
             ),
+            Divider(),
             Row(
+
               children: [
                 Expanded(
-                  child: ElevatedButton(
+                  child: TextButton(
                     onPressed: (){}, 
                     child: Text('Reservar')
                   ),
                 ),
+                SizedBox(
+                  height: 25,
+                  child: VerticalDivider(),
+                ),
                 Expanded(
-                  child: ElevatedButton(
+                  child: TextButton(
                     onPressed: (){}, 
                     child: Text('Horarios')
                   ),
                 ),
+                SizedBox(
+                  height: 25,
+                  child: VerticalDivider()),
                 Expanded(
-                  child: ElevatedButton(
+                  child: TextButton(
                     onPressed: (){}, 
                     child: Text('Historial')
                   ),
                 ),
               ],
-            )
+            ),
+          Divider(),
           ],
         ),
     );

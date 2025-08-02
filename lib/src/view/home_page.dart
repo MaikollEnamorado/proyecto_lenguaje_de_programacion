@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/data/sports_fields_income.dart';
+import 'package:reservacion_de_canchas_deportivas/data/sports_income.dart';
+import 'package:reservacion_de_canchas_deportivas/src/widget/item_sport.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_sport_field.dart';
 
 class HomePage extends StatelessWidget {
@@ -44,16 +47,20 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: ListView.builder(
-        itemCount: sportsFieldsIncome.length,
+        itemCount: sportsIncome.length,
         itemBuilder: (context, index) {
-          final cancha = sportsFieldsIncome[index];
-          return ItemSportField(
+          final cancha = sportsIncome[index];
+          return ItemSport(
             nombre: cancha['nombre'],
-            tipo: cancha['tipo'],
-            ubicacion: cancha['ubicacion'],
+            image: cancha['imagen'],
+            onTape: () {
+              context.goNamed(
+                'sportField',
+              );
+            },
           );
         },
-      ),
+      ), 
     );
   }
 }

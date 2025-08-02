@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/home_page.dart';
+import 'package:reservacion_de_canchas_deportivas/src/view/sport_field_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -17,7 +18,12 @@ class MyApp extends StatelessWidget {
             path: '/home',
             name: 'home',
             builder: (context, state) => const HomePage(),
-            )
+          ),
+          GoRoute(
+            path: '/sportField',
+            name: 'sportField',
+            builder: (context, state) => const SportFieldPage(),
+          ),
         ] 
       ),
     );
