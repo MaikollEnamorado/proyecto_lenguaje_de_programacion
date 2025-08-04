@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reservacion_de_canchas_deportivas/data/reservation.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_text_button.dart';
 class ItemSportField extends StatelessWidget {
   const ItemSportField(
@@ -76,7 +77,7 @@ class ItemSportField extends StatelessWidget {
                     ItemTextButton(
                       label: 'Reservar',
                       icon: Icons.event_available,
-                      onPressed: () {},
+                      onPressed: () => mostrarFormularioReservacion(context),
                     ),
                     SizedBox(
                       height: 25,
