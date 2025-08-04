@@ -28,9 +28,10 @@ class ItemSportField extends StatelessWidget {
             children: [
               SizedBox(height: 10,),
               Container(
+                color: Colors.blue,
                 margin: EdgeInsets.all(10.0),
                 child: Text(nombre,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, backgroundColor: const Color.fromARGB(255, 135, 173, 240)),
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,),
                 ),
               ),
               SizedBox(height: 5,),

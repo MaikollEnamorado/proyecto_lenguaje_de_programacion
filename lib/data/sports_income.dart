@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 
 const List<Map<String, dynamic>> sportsIncome = [
   {
