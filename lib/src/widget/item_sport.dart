@@ -13,25 +13,34 @@ class ItemSport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: onTape,
-        child: Stack(
-          alignment: Alignment.bottomLeft,
-          children: [
-            Image.network(
-              image,
-              fit: BoxFit.fitWidth,
-              width: double.infinity,
-              
+      margin: EdgeInsets.all(10.0),
+      child: Material(
+        elevation: 10,
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        child: Container(
+          margin: EdgeInsets.all(10.0),
+          child: InkWell(
+            onTap: onTape,
+            child: Stack(
+              alignment: Alignment.bottomLeft,
+              children: [
+                Image.network(
+                  image,
+                  fit: BoxFit.fitWidth,
+                  width: double.infinity,
+                  
+                  
+                ),
+                Text(nombre,
+                  style: TextStyle(
+                    fontSize: 25, 
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+                  ),
+              ],
             ),
-            Text(nombre,
-              style: TextStyle(
-                fontSize: 25, 
-                fontWeight: FontWeight.bold,
-                color: Colors.white),
-              ),
-          ],
+          ),
         ),
       ),
     );

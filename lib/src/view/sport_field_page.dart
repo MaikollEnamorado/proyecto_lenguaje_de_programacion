@@ -3,23 +3,30 @@ import 'package:reservacion_de_canchas_deportivas/data/sports_fields_income.dart
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_sport_field.dart';
 
 class SportFieldPage extends StatelessWidget {
-  const SportFieldPage({super.key});
+   const SportFieldPage({
+    super.key,
+    required this.tipo,
+    });
 
+  final String tipo;
+  
   @override
   Widget build(BuildContext context) {
+    List<Map<String, dynamic>> canchasFiltradas = sportsFieldsIncome.where((cancha) => cancha['tipo'] == tipo).toList();
     return Scaffold
       (
       appBar: AppBar(
         title: Center(child: const Text('Canchas deportivas')),
       ),
       body: ListView.builder(
-        itemCount: sportsFieldsIncome.length,
+        itemCount: canchasFiltradas.length,
         itemBuilder: (context, index) {
-          final cancha = sportsFieldsIncome[index];
+          final cancha = canchasFiltradas[index];
           return ItemSportField(
             nombre: cancha['nombre'],
             tipo: cancha['tipo'],
             ubicacion: cancha['ubicacion'],
+            imagenes: cancha['imagenes'],
           );
         }
       )
