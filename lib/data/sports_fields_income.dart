@@ -1,4 +1,6 @@
-const List<Map<String, dynamic>> sportsFieldsIncome = [
+import 'package:reservacion_de_canchas_deportivas/models/reservacion.dart';
+
+List<Map<String, dynamic>> sportsFieldsIncome = [
   {
     'nombre': 'Complejo deportivo Rancho Tara cancha #1',
     'tipo': 'Fútbol',
@@ -11,6 +13,20 @@ const List<Map<String, dynamic>> sportsFieldsIncome = [
     'horarios': [
       'Lunes a Viernes: 8:00 AM - 10:00 PM',
       'Sábados y Domingos: 9:00 AM - 11:00 PM'
+    ],
+    'reservacioneshistorial': [
+      Reservacion(
+        usuario: "Carlos Pérez",
+        fecha: DateTime(2025, 8, 4),
+        horaInicio: "10:00 AM",
+        horaFin: "11:30 AM",
+      ),
+      Reservacion(
+        usuario: "Ana López",
+        fecha: DateTime(2025, 8, 2),
+        horaInicio: "4:00 PM",
+        horaFin: "5:00 PM",
+      ),
     ]
   },
   {

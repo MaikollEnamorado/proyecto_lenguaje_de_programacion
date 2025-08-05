@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reservacion_de_canchas_deportivas/data/sport_button.dart';
+import 'package:reservacion_de_canchas_deportivas/models/reservacion.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_text_button.dart';
 class ItemSportField extends StatelessWidget {
   const ItemSportField(
@@ -9,6 +10,7 @@ class ItemSportField extends StatelessWidget {
     required this.ubicacion,
     this.imagenes,
     this.horarios,
+    this.historialCancha,
     });
 
   final String nombre;
@@ -16,6 +18,7 @@ class ItemSportField extends StatelessWidget {
   final String ubicacion;
   final List<String>? imagenes;
   final List<String>? horarios;
+  final List<Reservacion>? historialCancha;
   @override
   Widget build(BuildContext context) {
     final imagenesValidas = imagenes?.where((img) => img.trim().isNotEmpty).toList() ?? [];
@@ -101,7 +104,11 @@ class ItemSportField extends StatelessWidget {
                     ItemTextButton(
                       label: 'Historial', 
                       icon: Icons.history, 
-                      onPressed: () {}),
+                      onPressed: () => mostrarHistorialReservacion(
+                        context, 
+                        historialCancha ?? [],
+                      ),
+                    ),
                   ],
                 ),
               ],

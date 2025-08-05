@@ -12,7 +12,7 @@ class ScheduleSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final horarioosValidos = horarios?.where((h) => h.trim().isNotEmpty).toList() ?? [];
+    final horariosValidos = horarios.where((h) => h.trim().isNotEmpty).toList();
     return Wrap(
       children: [
         Container(
@@ -40,12 +40,12 @@ class ScheduleSheet extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 16),
-              horarioosValidos.isEmpty
+              horariosValidos.isEmpty
                   ? Center(child: Text('No hay horarios disponibles.'))
                   : ListView.separated(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: horarioosValidos.length,
+                      itemCount: horariosValidos.length,
                       separatorBuilder: (context, index) => Divider(),
                       itemBuilder: (context, index) {
                         return ListTile(

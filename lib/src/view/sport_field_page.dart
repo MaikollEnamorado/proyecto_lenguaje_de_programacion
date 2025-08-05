@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reservacion_de_canchas_deportivas/data/sports_fields_income.dart';
+import 'package:reservacion_de_canchas_deportivas/models/reservacion.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_sport_field.dart';
 
 class SportFieldPage extends StatelessWidget {
@@ -27,7 +28,8 @@ class SportFieldPage extends StatelessWidget {
             tipo: cancha['tipo'],
             ubicacion: cancha['ubicacion'],
             imagenes: cancha['imagenes'] is List<String> ? cancha['imagenes'] : [''], // Asegurarse de que sea una lista de cadenas
-            horarios: cancha['horarios'] is List<String> ? cancha['horarios'] : [''], // Asegurarse de que sea una lista de cadenas
+            horarios: cancha['horarios'] is List<String> ? cancha['horarios'] : [''],
+            historialCancha: cancha['reservacioneshistorial'] is List<Reservacion> ? cancha['reservacioneshistorial']: [], // Asegurarse de que sea una lista de cadenas
           );
         }
       )
