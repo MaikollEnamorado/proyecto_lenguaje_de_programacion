@@ -67,6 +67,17 @@ class _ReservationFormState extends State<ReservationForm> {
         Column(
           children: [
             Center(
+                child: Container(
+                  width: 40,
+                  height: 4,
+                  margin: EdgeInsets.only(bottom: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey[300],
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+              ),
+            Center(
               child: Text(
                 'Reservar Cancha',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),

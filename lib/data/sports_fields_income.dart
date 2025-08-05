@@ -17,7 +17,8 @@ const List<Map<String, dynamic>> sportsFieldsIncome = [
     'nombre': 'Cancha Fercho',
     'tipo': 'Tenis',
     'ubicacion': 'Colonia Las Palmas',
-    'imagenes': ['']
+    'imagenes': [],
+    'horarios': ['']
 
   },
   {

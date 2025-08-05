@@ -26,7 +26,8 @@ class SportFieldPage extends StatelessWidget {
             nombre: cancha['nombre'],
             tipo: cancha['tipo'],
             ubicacion: cancha['ubicacion'],
-            imagenes: cancha['imagenes'],
+            imagenes: cancha['imagenes'] is List<String> ? cancha['imagenes'] : [''], // Asegurarse de que sea una lista de cadenas
+            horarios: cancha['horarios'] is List<String> ? cancha['horarios'] : [''], // Asegurarse de que sea una lista de cadenas
           );
         }
       )

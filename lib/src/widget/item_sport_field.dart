@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reservacion_de_canchas_deportivas/data/reservation.dart';
+import 'package:reservacion_de_canchas_deportivas/data/sport_button.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_text_button.dart';
 class ItemSportField extends StatelessWidget {
   const ItemSportField(
@@ -7,17 +7,19 @@ class ItemSportField extends StatelessWidget {
     required this.nombre,  
     required this.tipo,
     required this.ubicacion,
-    this.imagenes
+    this.imagenes,
+    this.horarios,
     });
 
   final String nombre;
   final String tipo;
   final String ubicacion;
   final List<String>? imagenes;
-
+  final List<String>? horarios;
   @override
   Widget build(BuildContext context) {
     final imagenesValidas = imagenes?.where((img) => img.trim().isNotEmpty).toList() ?? [];
+
     double screenwidth = MediaQuery.of(context).size.width;
     double imageWidth = screenwidth * 0.3;
     return Container(
@@ -86,7 +88,13 @@ class ItemSportField extends StatelessWidget {
                     ItemTextButton(
                       label: 'Horarios', 
                       icon: Icons.schedule, 
-                      onPressed: () {}),
+                      onPressed: () => mostrarHorariosCancha(
+                        context, 
+                        nombre,
+                        horarios ?? [],
+                        
+                      ),
+                    ),
                     SizedBox(
                       height: 25,
                       child: VerticalDivider()),
