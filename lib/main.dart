@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/home_page.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/sport_field_page.dart';
-
+import 'package:reservacion_de_canchas_deportivas/src/view/login_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: GoRouter(
-        initialLocation: '/home',
+        initialLocation: '/login', // ← inicia en la pantalla de login
         routes: [
           GoRoute(
             path: '/home',
@@ -28,9 +28,14 @@ class MyApp extends StatelessWidget {
                 },
               ),
             ], 
-        ),
-        ]
-    )
+          ),
+          GoRoute(
+            path: '/login',
+            name: 'login',
+            builder: (context, state) => const LoginPage(),
+          ),
+        ],
+      ),
     );
   }
 }
