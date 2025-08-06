@@ -3,19 +3,25 @@ import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/data/sports_income.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_sport.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/side_menu.dart';
+
 class HomePage extends StatelessWidget {
-  const HomePage({super.key,});
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold
-      (
+    return Scaffold(
       appBar: AppBar(
-        title: Center(child: const Text('Canchas deportivas')),
+        title: Center(
+          child: const Text(
+            'Canchas deportivas',
+            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+        ),
+        backgroundColor: const Color.fromARGB(255, 4, 66, 6),
+        centerTitle: true,
       ),
       drawer: SideMenu(),
       body: ListView.builder(
-        
         itemCount: sportsIncome.length,
         itemBuilder: (context, index) {
           final cancha = sportsIncome[index];
@@ -23,17 +29,11 @@ class HomePage extends StatelessWidget {
             nombre: cancha['nombre'],
             image: cancha['imagen'],
             onTape: () {
-              context.goNamed(
-                'sportField',
-                extra: {
-                  'tipo': cancha['tipo'],
-                },
-              );
+              context.goNamed('sportField', extra: {'tipo': cancha['tipo']});
             },
           );
         },
-      ), 
+      ),
     );
   }
 }
-
