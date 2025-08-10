@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:reservacion_de_canchas_deportivas/src/widget/item_reservation_history.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/redes_sociales.dart';
 import 'package:reservacion_de_canchas_deportivas/data/pefil.dart';
+import 'package:reservacion_de_canchas_deportivas/src/view/historial_reservas_page.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -105,9 +107,9 @@ class SideMenu extends StatelessWidget {
               ),
             ),
             child: ListTile(
-              leading: Icon(Icons.account_box, color: Colors.amber),
+              leading: Icon(Icons.history, color: Colors.amber),
               title: const Text(
-                'Perfil',
+                'Historial de reservas',
                 style: TextStyle(
                   color: Color.fromARGB(255, 0, 0, 0),
                   fontWeight: FontWeight.bold,
@@ -117,7 +119,9 @@ class SideMenu extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => HistorialReservasPage(),
+                  ),
                 );
               },
             ),

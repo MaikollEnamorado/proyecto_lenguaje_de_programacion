@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:reservacion_de_canchas_deportivas/controllers/reserva_controller.dart';
 
 class ReservationForm extends StatefulWidget {
   const ReservationForm({super.key});
@@ -11,6 +13,7 @@ class _ReservationFormState extends State<ReservationForm> {
   DateTime? fechaSeleccionada;
   TimeOfDay? horaSeleccionada;
   Duration? duracion;
+  final ReservaController reservaController = Get.put(ReservaController());
 
   //final _formKey = GlobalKey<FormState>();
 
@@ -47,7 +50,7 @@ class _ReservationFormState extends State<ReservationForm> {
                 DropdownMenuItem(
                   value: Duration(hours: i),
                   child: Text('$i hora${i > 1 ? 's' : ''}'),
-                )
+                ),
             ],
             onChanged: (valor) {
               if (valor != null) Navigator.pop(context, valor);
@@ -67,16 +70,16 @@ class _ReservationFormState extends State<ReservationForm> {
         Column(
           children: [
             Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  margin: EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(4),
-                  ),
+              child: Container(
+                width: 40,
+                height: 4,
+                margin: EdgeInsets.only(bottom: 10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(4),
                 ),
               ),
+            ),
             Center(
               child: Text(
                 'Reservar Cancha',
@@ -87,28 +90,34 @@ class _ReservationFormState extends State<ReservationForm> {
             Text('Selecciona fecha de reservación:'),
             SizedBox(height: 10),
             ItemSelection(
-              onTap: _elegirFecha, 
-              child: Text(fechaSeleccionada != null
-                ? '${fechaSeleccionada!.toLocal()}'.split(' ')[0]
-                : 'Elige una fecha'),
-           ),
+              onTap: _elegirFecha,
+              child: Text(
+                fechaSeleccionada != null
+                    ? '${fechaSeleccionada!.toLocal()}'.split(' ')[0]
+                    : 'Elige una fecha',
+              ),
+            ),
             SizedBox(height: 10),
             Text('Selecciona hora de inicio:'),
             SizedBox(height: 10),
             ItemSelection(
-              onTap: _elegirHora, 
-              child: Text(horaSeleccionada != null
+              onTap: _elegirHora,
+              child: Text(
+                horaSeleccionada != null
                     ? horaSeleccionada!.format(context)
-                    : 'Elige una hora'),
+                    : 'Elige una hora',
+              ),
             ),
             SizedBox(height: 10),
             Text('¿Cuánto tiempo ocuparás la cancha?'),
             SizedBox(height: 10),
             ItemSelection(
-              onTap: _elegirDuracion, 
-              child: Text(duracion != null
+              onTap: _elegirDuracion,
+              child: Text(
+                duracion != null
                     ? '${duracion!.inHours} hora${duracion!.inHours > 1 ? 's' : ''}'
-                    : 'Elige duración'),   
+                    : 'Elige duración',
+              ),
             ),
             SizedBox(height: 16),
             ElevatedButton.icon(
@@ -116,7 +125,14 @@ class _ReservationFormState extends State<ReservationForm> {
                 if (fechaSeleccionada != null &&
                     horaSeleccionada != null &&
                     duracion != null) {
-                  // TODO: Procesar reservación aquí
+                  // Aquí guardamos la reserva usando GetX
+                  reservaController.agregarReserva(
+                    Reserva(
+                      fecha: fechaSeleccionada!,
+                      hora: horaSeleccionada!,
+                      duracion: duracion!,
+                    ),
+                  );
                   Navigator.pop(context); // cerrar modal
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -140,26 +156,22 @@ class _ReservationFormState extends State<ReservationForm> {
 }
 
 class ItemSelection extends StatelessWidget {
-  const ItemSelection({
-    super.key,
-    required this.onTap,
-    required this.child,
-    });
-  
+  const ItemSelection({super.key, required this.onTap, required this.child});
+
   final VoidCallback onTap;
   final Widget child;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-              onTap: onTap,
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.grey),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                child: child,
-              ),
-            );
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: child,
+      ),
+    );
   }
 }
