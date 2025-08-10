@@ -4,6 +4,7 @@ import 'package:reservacion_de_canchas_deportivas/src/widget/item_reservation_hi
 import 'package:reservacion_de_canchas_deportivas/src/widget/redes_sociales.dart';
 import 'package:reservacion_de_canchas_deportivas/data/pefil.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/historial_reservas_page.dart';
+import 'package:reservacion_de_canchas_deportivas/src/view/pagina_preguntas_frecuentes.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -123,6 +124,12 @@ class SideMenu extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaginaPreguntasFrecuentes(),
+                  ),
+                );
               },
             ),
           ),
