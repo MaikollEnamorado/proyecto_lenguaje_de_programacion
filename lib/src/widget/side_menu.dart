@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/redes_sociales.dart';
+import 'package:reservacion_de_canchas_deportivas/data/pefil.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({super.key});
@@ -114,6 +115,10 @@ class SideMenu extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
               },
             ),
           ),
