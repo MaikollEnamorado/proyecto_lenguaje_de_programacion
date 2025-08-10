@@ -23,6 +23,7 @@ class ProfileScreen extends StatelessWidget {
           children: [Text('Perfil', style: TextStyle(color: Colors.white))],
         ),
       ),
+
       body: Stack(
         children: [
           Container(

@@ -125,7 +125,6 @@ class _ReservationFormState extends State<ReservationForm> {
                 if (fechaSeleccionada != null &&
                     horaSeleccionada != null &&
                     duracion != null) {
-                  // Aquí guardamos la reserva usando GetX
                   reservaController.agregarReserva(
                     Reserva(
                       fecha: fechaSeleccionada!,
@@ -143,7 +142,8 @@ class _ReservationFormState extends State<ReservationForm> {
               icon: Icon(Icons.check),
               label: Text('Confirmar reservación'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.green,
                 minimumSize: Size(double.infinity, 48),
               ),
             ),
