@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:reservacion_de_canchas_deportivas/controllers/reserva_controller.dart';
 
 class HistorialReservasPage extends StatelessWidget {
-  final ReservaController reservaController = Get.find();
+  final ReservaController reservaController =
+      Get.isRegistered<ReservaController>()
+      ? Get.find<ReservaController>()
+      : Get.put(ReservaController());
 
   @override
   Widget build(BuildContext context) {

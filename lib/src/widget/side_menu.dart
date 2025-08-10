@@ -84,29 +84,6 @@ class SideMenu extends StatelessWidget {
               ),
             ),
             child: ListTile(
-              leading: Icon(Icons.history_rounded, color: Colors.amber),
-              title: const Text(
-                'Historial de canchas',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: const Color.fromARGB(255, 255, 255, 255),
-                  width: 2,
-                ),
-              ),
-            ),
-            child: ListTile(
               leading: Icon(Icons.history, color: Colors.amber),
               title: const Text(
                 'Historial de reservas',
@@ -146,6 +123,33 @@ class SideMenu extends StatelessWidget {
               ),
               onTap: () {
                 Navigator.pop(context);
+              },
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  width: 2,
+                ),
+              ),
+            ),
+            child: ListTile(
+              leading: Icon(Icons.more, color: Colors.amber),
+              title: const Text(
+                'Mas sobre nosotros',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
               },
             ),
           ),
