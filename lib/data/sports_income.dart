@@ -1,10 +1,8 @@
-
 const List<Map<String, dynamic>> sportsIncome = [
   {
     'nombre': 'Canchas de Futbol',
     'tipo': 'Fútbol',
     'imagen': 'https://donpotrero.com/img/posts/2/medidas_sm.jpg',
-    
   },
   {
     'nombre': 'Canchas de Baloncesto',

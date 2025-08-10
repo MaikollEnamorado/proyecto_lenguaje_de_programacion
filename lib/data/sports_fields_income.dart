@@ -12,7 +12,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
     'horarios': [
       'Lunes a Viernes: 8:00 AM - 10:00 PM',
-      'Sábados y Domingos: 9:00 AM - 11:00 PM'
+      'Sábados y Domingos: 9:00 AM - 11:00 PM',
     ],
     'reservacioneshistorial': [
       Reservacion(
@@ -27,15 +27,14 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
         horaInicio: "4:00 PM",
         horaFin: "5:00 PM",
       ),
-    ]
+    ],
   },
   {
     'nombre': 'Cancha Fercho',
     'tipo': 'Tenis',
     'ubicacion': 'Colonia Las Palmas',
     'imagenes': [],
-    'horarios': ['']
-
+    'horarios': [''],
   },
   {
     'nombre': 'Cancha Suarez',
