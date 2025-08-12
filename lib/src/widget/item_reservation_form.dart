@@ -10,6 +10,7 @@ class ReservationForm extends StatefulWidget {
 }
 
 class _ReservationFormState extends State<ReservationForm> {
+  String? usuario;
   DateTime? fechaSeleccionada;
   TimeOfDay? horaSeleccionada;
   Duration? duracion;
@@ -87,6 +88,16 @@ class _ReservationFormState extends State<ReservationForm> {
               ),
             ),
             SizedBox(height: 20),
+            Text('Usuario:'),
+            SizedBox(height: 10),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Ingresa tu nombre',
+              ),
+              onChanged: (value) => usuario = value,
+            ),
+            SizedBox(height: 10),
             Text('Selecciona fecha de reservación:'),
             SizedBox(height: 10),
             ItemSelection(
@@ -122,17 +133,40 @@ class _ReservationFormState extends State<ReservationForm> {
             SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: () {
-                if (fechaSeleccionada != null &&
+                if (usuario != null &&
+                    usuario!.trim().isNotEmpty &&
+                    fechaSeleccionada != null &&
                     horaSeleccionada != null &&
                     duracion != null) {
-                  reservaController.agregarReserva(
-                    Reserva(
-                      fecha: fechaSeleccionada!,
-                      hora: horaSeleccionada!,
-                      duracion: duracion!,
-                    ),
+                  final reserva = Reserva(
+                    usuario: usuario!,
+                    fecha: fechaSeleccionada!,
+                    hora: horaSeleccionada!,
+                    duracion: duracion!,
                   );
-                  Navigator.pop(context); // cerrar modal
+                  final exito = reservaController.agregarReserva(reserva);
+                  if (exito) {
+                    Navigator.pop(context); 
+                  } else {
+                    
+                    if (!reservaController.estaDentroDeHorarioPermitido(
+                      reserva,
+                    )) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'La reserva está fuera del horario permitido',
+                          ),
+                        ),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Ya existe una reserva en ese horario'),
+                        ),
+                      );
+                    }
+                  }
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Completa todos los campos')),
