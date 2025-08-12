@@ -63,7 +63,7 @@ class HistorialReservasPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: ListTile(
-                    title: const Text('Cancha reservada'),
+                    title: Text('Cancha reservada por ${reserva.usuario}'),
                     subtitle: Text(
                       'Fecha: ${reserva.fecha.toLocal().toString().split(' ')[0]}\n'
                       'Hora: ${reserva.hora.format(context)}\n'
