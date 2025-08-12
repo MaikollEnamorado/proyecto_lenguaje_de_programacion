@@ -8,6 +8,8 @@ class HistorialReservasPage extends StatelessWidget {
       ? Get.find<ReservaController>()
       : Get.put(ReservaController());
 
+  HistorialReservasPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,13 +64,60 @@ class HistorialReservasPage extends StatelessWidget {
                     color: Colors.white.withOpacity(0.8),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: ListTile(
-                    title: const Text('Cancha reservada'),
-                    subtitle: Text(
-                      'Fecha: ${reserva.fecha.toLocal().toString().split(' ')[0]}\n'
-                      'Hora: ${reserva.hora.format(context)}\n'
-                      'Duración: ${reserva.duracion.inHours} hora(s)',
-                    ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: const Text('Cancha reservada'),
+                          subtitle: Text(
+                            'Fecha: ${reserva.fecha.toLocal().toString().split(' ')[0]}\n'
+                            'Hora: ${reserva.hora.format(context)}\n'
+                            'Duración: ${reserva.duracion.inHours} hora(s)',
+                          ),
+                        ),
+                      ),
+                      PopupMenuButton(
+                        icon: const Icon(Icons.more_vert),
+                        onSelected: (value) {
+                          if (value == 'eliminar') {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: const Text("Eliminar"),
+                                  content: const Text("¿Deseas eliminar esta reserva?"),
+                                  actions: [
+                                    TextButton(
+                                      child: const Text("No"),
+                                      onPressed: () {
+                                        Navigator.of(context).pop(); // Cierra el diálogo
+                                      },
+                                    ),
+                                    TextButton(
+                                      child: const Text("Sí"),
+                                      onPressed: () {
+                                        reservaController.reservas.removeAt(index);
+                                        Navigator.of(context).pop(); // Cierra el diálogo
+                                      },
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          }
+                        },
+                        itemBuilder: (context) => [
+                          const PopupMenuItem(
+                            value: 'editar',
+                            child: Text('Editar reserva'),
+                          ),
+                          const PopupMenuItem(
+                            value: 'eliminar',
+                            child: Text('Eliminar reserva'),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 );
               },

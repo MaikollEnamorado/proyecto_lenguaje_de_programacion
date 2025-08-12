@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:reservacion_de_canchas_deportivas/controllers/reserva_controller.dart';
 
-class ReservationForm extends StatefulWidget {
-  const ReservationForm({super.key});
+class ItemReservationForm extends StatefulWidget {
+  const ItemReservationForm({super.key});
 
   @override
-  State<ReservationForm> createState() => _ReservationFormState();
+  State<ItemReservationForm> createState() => _ItemReservationFormState();
 }
 
-class _ReservationFormState extends State<ReservationForm> {
+class _ItemReservationFormState extends State<ItemReservationForm> {
   DateTime? fechaSeleccionada;
   TimeOfDay? horaSeleccionada;
   Duration? duracion;

@@ -19,7 +19,7 @@ void mostrarFormularioReservacion(BuildContext context) {
           left: 20,
           right: 20,
         ),
-        child: ReservationForm(),
+        child: ItemReservationForm(),
       );
     },
   );
