@@ -16,7 +16,7 @@ class SportFieldPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(title: Center(child: const Text('Canchas deportivas'))),
-      body: ListView.builder(
+      body: canchasFiltradas.isEmpty ? Center(child: Text('No hay canchas registradas de $tipo')) : ListView.builder(
         itemCount: canchasFiltradas.length,
         itemBuilder: (context, index) {
           final cancha = canchasFiltradas[index];
@@ -26,7 +26,7 @@ class SportFieldPage extends StatelessWidget {
             ubicacion: cancha['ubicacion'],
             imagenes: cancha['imagenes'] is List<String>
                 ? cancha['imagenes']
-                : [''], // Asegurarse de que sea una lista de cadenas
+                : [''], // Asegurarse de que sea una lista de cadena
             horarios: cancha['horarios'] is List<String>
                 ? cancha['horarios']
                 : [''],
