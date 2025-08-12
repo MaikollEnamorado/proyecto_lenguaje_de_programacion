@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           GoRoute(
             path: '/home',
             name: 'home',
-            builder: (context, state) => const HomePage(),
+            builder: (context, state) =>  HomePage(),
             routes: [
               GoRoute(
                 path: '/sportField',

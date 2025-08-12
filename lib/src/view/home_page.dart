@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:reservacion_de_canchas_deportivas/data/sports_income.dart';
-import 'package:reservacion_de_canchas_deportivas/src/widget/item_sport.dart';
+import 'package:reservacion_de_canchas_deportivas/src/view/fragments/field_types_page.dart';
+import 'package:reservacion_de_canchas_deportivas/src/view/fragments/historial_reservas_page.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/side_menu.dart';
 
-class HomePage extends StatelessWidget {
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final pageController = PageController(initialPage: 0);
+
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -21,18 +30,41 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
       ),
       drawer: SideMenu(),
-      body: ListView.builder(
-        itemCount: sportsIncome.length,
-        itemBuilder: (context, index) {
-          final cancha = sportsIncome[index];
-          return ItemSport(
-            nombre: cancha['nombre'],
-            image: cancha['imagen'],
-            onTape: () {
-              context.goNamed('sportField', extra: {'tipo': cancha['tipo']});
-            },
+      body: PageView(
+        controller: pageController,
+        onPageChanged: (index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
+        children: [
+          const FieldTypesPage(),
+          HistorialReservasPage()
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentPage,
+        onTap: (index) {
+          setState(() {
+            currentPage = index;
+          });
+          pageController.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
           );
         },
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_soccer),
+            label: 'Tipos de Canchas',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.history),
+            label: 'Historial de Reservas',
+          ),
+        ],
       ),
     );
   }

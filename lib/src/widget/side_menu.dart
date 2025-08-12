@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_reservation_history.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/redes_sociales.dart';
 import 'package:reservacion_de_canchas_deportivas/data/pefil.dart';
-import 'package:reservacion_de_canchas_deportivas/src/view/historial_reservas_page.dart';
+import 'package:reservacion_de_canchas_deportivas/src/view/fragments/historial_reservas_page.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/pagina_preguntas_frecuentes.dart';
 
 class SideMenu extends StatelessWidget {
