@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,8 +13,27 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final box = GetStorage();
+  Map<String, String> _users = {};
 
-  final Map<String, String> _users = {'admin': '1234'};
+  @override
+  void initState() {
+    super.initState();
+    // GetStorage
+    _initStorage();
+  }
+
+  Future<void> _initStorage() async {
+    await GetStorage.init();
+    final storedUsers = box.read<Map>('users');
+    if (storedUsers != null) {
+      _users = Map<String, String>.from(storedUsers);
+    } else {
+      _users = {'admin': '1234'};
+      box.write('users', _users);
+    }
+    setState(() {});
+  }
 
   void _login() {
     final username = _usernameController.text;
@@ -42,6 +62,7 @@ class _LoginPageState extends State<LoginPage> {
       } else {
         setState(() {
           _users[username] = password;
+          box.write('users', _users);
         });
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Usuario creado exitosamente')),
