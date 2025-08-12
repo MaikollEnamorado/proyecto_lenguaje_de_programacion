@@ -18,13 +18,13 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     'reservacioneshistorial': [
       Reservacion(
         usuario: "Carlos Pérez",
-        fecha: DateTime(2025, 8, 4),
+        fecha: DateTime(2025, 8, 15),
         horaInicio: "10:00 AM",
         horaFin: "11:30 AM",
       ),
       Reservacion(
         usuario: "Ana López",
-        fecha: DateTime(2025, 8, 2),
+        fecha: DateTime(2025, 8, 14),
         horaInicio: "4:00 PM",
         horaFin: "5:00 PM",
       ),
@@ -47,13 +47,13 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     'reservacioneshistorial': [
       Reservacion(
         usuario: "Carlos Pérez",
-        fecha: DateTime(2025, 8, 4),
+        fecha: DateTime(2025, 8, 15),
         horaInicio: "10:00 AM",
         horaFin: "11:30 AM",
       ),
       Reservacion(
         usuario: "Ana López",
-        fecha: DateTime(2025, 8, 2),
+        fecha: DateTime(2025, 8, 14),
         horaInicio: "4:00 PM",
         horaFin: "5:00 PM",
       ),
@@ -77,16 +77,34 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     'reservacioneshistorial': [
       Reservacion(
         usuario: "Carlos Pérez",
-        fecha: DateTime(2025, 8, 4),
+        fecha: DateTime(2025, 8, 15),
         horaInicio: "10:00 AM",
         horaFin: "11:30 AM",
       ),
       Reservacion(
         usuario: "Ana López",
-        fecha: DateTime(2025, 8, 2),
+        fecha: DateTime(2025, 8, 14),
         horaInicio: "4:00 PM",
         horaFin: "5:00 PM",
       ),
+      Reservacion(
+        usuario: "Luis García",
+        fecha: DateTime(2025, 8, 15),
+        horaInicio: "2:00 PM",
+        horaFin: "4:00 PM",
+      ),
+      Reservacion(
+        usuario: "Manuel Paz",
+        fecha: DateTime(2025, 8, 15),
+        horaInicio: "1:00 PM",
+        horaFin: "2:00 PM",
+      ),
+      Reservacion(
+        usuario: "Ana Bermudez",
+        fecha: DateTime(2025, 8, 15),
+        horaInicio: "9:00 AM",
+        horaFin: "12:00 PM",
+      )
     ],
   },
   {
@@ -113,6 +131,18 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
       Reservacion(
         usuario: "Ana López",
         fecha: DateTime(2025, 8, 2),
+        horaInicio: "4:00 PM",
+        horaFin: "5:00 PM",
+      ),
+      Reservacion(
+        usuario: "Carlos Pérez",
+        fecha: DateTime(2025, 8, 15),
+        horaInicio: "10:00 AM",
+        horaFin: "11:30 AM",
+      ),
+      Reservacion(
+        usuario: "Ana López",
+        fecha: DateTime(2025, 8, 14),
         horaInicio: "4:00 PM",
         horaFin: "5:00 PM",
       ),
