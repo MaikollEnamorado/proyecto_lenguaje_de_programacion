@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:go_router/go_router.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -41,6 +42,8 @@ class _LoginPageState extends State<LoginPage> {
 
     if (_formKey.currentState!.validate()) {
       if (_users.containsKey(username) && _users[username] == password) {
+        GetStorage().write('loggedIn', true);
+        GetStorage().write('username', username);
         context.go('/home');
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

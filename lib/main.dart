@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/home_page.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/sport_field_page.dart';
@@ -12,7 +14,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routerConfig: GoRouter(
-        initialLocation: '/login', // ← inicia en la pantalla de login
+        redirect: (context, state) {
+          final loggedIn = GetStorage().read('loggedIn') ?? false;
+          if (!loggedIn) {
+            GetStorage().erase();
+          }
+          return '/login';
+        },
+        initialLocation: '/home', // ← inicia en la pantalla de login
         routes: [
           GoRoute(
             path: '/home',
