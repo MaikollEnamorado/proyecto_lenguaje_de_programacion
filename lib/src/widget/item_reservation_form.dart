@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:reservacion_de_canchas_deportivas/controllers/reserva_controller.dart';
 
 class ItemReservationForm extends StatefulWidget {
@@ -11,7 +10,7 @@ class ItemReservationForm extends StatefulWidget {
 }
 
 class _ItemReservationFormState extends State<ItemReservationForm> {
-  String? usuario = GetStorage().read('username').toString();
+  String? usuario;
   DateTime? fechaSeleccionada;
   TimeOfDay? horaSeleccionada;
   Duration? duracion;
@@ -23,7 +22,6 @@ class _ItemReservationFormState extends State<ItemReservationForm> {
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(Duration(days: 30)),
-      locale: const Locale('es', 'ES'),
     );
     if (fecha != null) setState(() => fechaSeleccionada = fecha);
   }
@@ -32,14 +30,6 @@ class _ItemReservationFormState extends State<ItemReservationForm> {
     final hora = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
-      builder: (context, child) {
-        return Localizations.override(
-          context: context,
-          locale: const Locale('es', 'ES'),
-          child: child,
-        );
-      },
-      
     );
     if (hora != null) setState(() => horaSeleccionada = hora);
   }
@@ -98,7 +88,13 @@ class _ItemReservationFormState extends State<ItemReservationForm> {
             SizedBox(height: 20),
             Text('Usuario:'),
             SizedBox(height: 10),
-            Text('$usuario'),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: 'Ingresa tu nombre',
+              ),
+              onChanged: (value) => usuario = value,
+            ),
             SizedBox(height: 10),
             Text('Selecciona fecha de reservación:'),
             SizedBox(height: 10),
@@ -135,7 +131,9 @@ class _ItemReservationFormState extends State<ItemReservationForm> {
             SizedBox(height: 16),
             ElevatedButton.icon(
               onPressed: () {
-                if (fechaSeleccionada != null &&
+                if (usuario != null &&
+                    usuario!.trim().isNotEmpty &&
+                    fechaSeleccionada != null &&
                     horaSeleccionada != null &&
                     duracion != null) {
                   final reserva = Reserva(
