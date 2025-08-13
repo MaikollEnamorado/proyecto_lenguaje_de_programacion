@@ -2,6 +2,7 @@ import 'package:reservacion_de_canchas_deportivas/models/reservacion.dart';
 
 List<Map<String, dynamic>> sportsFieldsIncome = [
   {
+    'canchaId': 1,
     'nombre': 'Complejo deportivo Rancho Tara cancha #1',
     'tipo': 'Fútbol',
     'ubicacion':
@@ -12,7 +13,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
       'https://lh3.googleusercontent.com/gps-cs-s/AC9h4npXo3EHaosmjitNyvFr1TOU5mFlJaAIa8MdULuYXly2EPtvv607yx2ghwWGKKKHyusDDtuDHEJzgYu5ehHIgcBPQJcYnz88KADHLT4ztwnHXWR_mkXnnDc9PQEH7KZpG2jt9Hd8=s1360-w1360-h1020-rw',
     ],
     'horarios': [
-      'Lunes a Viernes: 8:00 AM - 10:00 PM',
+      ['Lunes a Viernes:' ' 8:00 AM - 10:00 PM'],
       'Sábados y Domingos: 9:00 AM - 11:00 PM',
     ],
     'reservacioneshistorial': [
@@ -31,6 +32,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 2,
     'nombre': 'Planeta futbol',
     'tipo': 'Fútbol',
     'ubicacion':
@@ -60,6 +62,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 3,
     'nombre': 'Canchas Maracana Palenque',
     'tipo': 'Fútbol',
     'ubicacion':
@@ -108,6 +111,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 4,
     'nombre': 'Canchas La Fuente',
     'tipo': 'Fútbol',
     'ubicacion':
@@ -149,6 +153,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 5,
     'nombre': 'Cancha Fercho',
     'tipo': 'Baloncesto',
     'ubicacion': 'Colonia las palmas',
@@ -173,6 +178,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 6,
     'nombre': 'Campo Ixel Pineda',
     'tipo': 'Beisbol',
     'ubicacion': 'Colonia las Brisas',
@@ -197,6 +203,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 7,
     'nombre': 'Campo de Baseball Rangers',
     'tipo': 'Beisbol',
     'ubicacion': 'Blvr. Las Torres, 21102 San Pedro Sula',
@@ -225,6 +232,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 8,
     'nombre': 'Campo de SoftBall Jose Enrique Bonilla',
     'tipo': 'Beisbol',
     'ubicacion': 'Colonia Jardines del valle San Pedro Sula',
@@ -239,6 +247,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     'reservacioneshistorial': ''
   },
   {
+    'canchaId': 9,
     'nombre': 'Club Hondureño Arabe',
     'tipo': 'Tenis',
     'ubicacion': 'Cortes, 25 y 26 Avenida 1 y HN 21104, 4 Calle SO, 21104 San Pedro Sula',
@@ -264,6 +273,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 10,
     'nombre': 'Bounce',
     'tipo': 'Tenis',
     'ubicacion': '23 Avenida NO, 7 Calle, 21102 San Pedro Sula, Cortés',
@@ -290,6 +300,7 @@ List<Map<String, dynamic>> sportsFieldsIncome = [
     ],
   },
   {
+    'canchaId': 11,
     'nombre': 'Cancha la Red',
     'tipo': 'Voleibol',
     'ubicacion': 'Colonia las Brisas',

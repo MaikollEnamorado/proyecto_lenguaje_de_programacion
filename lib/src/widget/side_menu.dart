@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/item_reservation_history.dart';
 import 'package:reservacion_de_canchas_deportivas/src/widget/redes_sociales.dart';
 import 'package:reservacion_de_canchas_deportivas/data/pefil.dart';
@@ -156,6 +158,53 @@ class SideMenu extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ProfileScreen()),
+                );
+              },
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: const Color.fromARGB(255, 255, 255, 255),
+                  width: 2,
+                ),
+              ),
+            ),
+            child: ListTile(
+              leading: Icon(Icons.logout, color: Colors.amber),
+              title: const Text(
+                'Salir de la sesión',
+                style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: const Text("Cerrar sesión"),
+                      content: const Text("¿Estás seguro de que deseas cerrar sesión?"),
+                      actions: [
+                        TextButton(
+                          child: const Text("Cancelar"),
+                          onPressed: () {
+                            Navigator.of(context).pop(); // Cierra el diálogo
+                          },
+                        ),
+                        TextButton(
+                          child: const Text("Cerrar sesión"),
+                          onPressed: () {
+                            GetStorage().erase();
+                            GetStorage().write('loggedIn', false);
+                            context.pushReplacement('/login');
+                          },
+                        ),
+                      ],
+                    );
+                  },
                 );
               },
             ),

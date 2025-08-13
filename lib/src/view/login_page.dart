@@ -30,7 +30,7 @@ class _LoginPageState extends State<LoginPage> {
     if (storedUsers != null) {
       _users = Map<String, String>.from(storedUsers);
     } else {
-      _users = {'admin': '1234'};
+      _users = {'admin@': '1234'};
       box.write('users', _users);
     }
     setState(() {});
