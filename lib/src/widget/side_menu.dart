@@ -197,7 +197,7 @@ class SideMenu extends StatelessWidget {
                         TextButton(
                           child: const Text("Cerrar sesión"),
                           onPressed: () {
-                            GetStorage().erase();
+                            GetStorage().remove('username');
                             GetStorage().write('loggedIn', false);
                             context.pushReplacement('/login');
                           },
