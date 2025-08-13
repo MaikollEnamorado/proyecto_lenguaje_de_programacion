@@ -8,14 +8,13 @@ class ItemReservationForm extends StatefulWidget {
   @override
   State<ItemReservationForm> createState() => _ItemReservationFormState();
 }
+
 class _ItemReservationFormState extends State<ItemReservationForm> {
   String? usuario;
   DateTime? fechaSeleccionada;
   TimeOfDay? horaSeleccionada;
   Duration? duracion;
   final ReservaController reservaController = Get.put(ReservaController());
-
-  //final _formKey = GlobalKey<FormState>();
 
   void _elegirFecha() async {
     final fecha = await showDatePicker(
@@ -145,17 +144,24 @@ class _ItemReservationFormState extends State<ItemReservationForm> {
                   );
                   final exito = reservaController.agregarReserva(reserva);
                   if (exito) {
-                    Navigator.pop(context); 
+                    Navigator.pop(context);
                   } else {
-                    
                     if (!reservaController.estaDentroDeHorarioPermitido(
                       reserva,
                     )) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text('Error de horario'),
                           content: Text(
                             'La reserva está fuera del horario permitido',
                           ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text('Aceptar'),
+                            ),
+                          ],
                         ),
                       );
                     } else {
@@ -167,8 +173,18 @@ class _ItemReservationFormState extends State<ItemReservationForm> {
                     }
                   }
                 } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Completa todos los campos')),
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('Campos incompletos'),
+                      content: Text('Completa todos los campos'),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text('Aceptar'),
+                        ),
+                      ],
+                    ),
                   );
                 }
               },
