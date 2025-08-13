@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/route_manager.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reservacion_de_canchas_deportivas/src/view/home_page.dart';
@@ -36,12 +35,12 @@ class MyApp extends StatelessWidget {
           }
           return null;
         },
-        initialLocation: '/home', // ← inicia en la pantalla de login
+        initialLocation: '/login',
         routes: [
           GoRoute(
             path: '/home',
             name: 'home',
-            builder: (context, state) =>  HomePage(),
+            builder: (context, state) => HomePage(),
             routes: [
               GoRoute(
                 path: '/sportField',
@@ -51,7 +50,7 @@ class MyApp extends StatelessWidget {
                   return SportFieldPage(tipo: extra['tipo'] as String);
                 },
               ),
-            ], 
+            ],
           ),
           GoRoute(
             path: '/login',
