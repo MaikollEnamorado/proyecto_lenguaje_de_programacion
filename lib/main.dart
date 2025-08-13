@@ -16,17 +16,21 @@ class MyApp extends StatelessWidget {
       routerConfig: GoRouter(
         redirect: (context, state) {
           final loggedIn = GetStorage().read('loggedIn') ?? false;
-          if (!loggedIn) {
-            GetStorage().erase();
+          final loggingIn = state.uri.toString() == '/login';
+          if (!loggedIn && !loggingIn) {
+            return '/login';
           }
-          return '/login';
+          if (loggedIn && loggingIn) {
+            return '/home';
+          }
+          return null;
         },
-        initialLocation: '/home', // ← inicia en la pantalla de login
+        initialLocation: '/login',
         routes: [
           GoRoute(
             path: '/home',
             name: 'home',
-            builder: (context, state) =>  HomePage(),
+            builder: (context, state) => HomePage(),
             routes: [
               GoRoute(
                 path: '/sportField',
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
                   return SportFieldPage(tipo: extra['tipo'] as String);
                 },
               ),
-            ], 
+            ],
           ),
           GoRoute(
             path: '/login',
